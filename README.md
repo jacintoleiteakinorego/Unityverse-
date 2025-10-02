@@ -1,59 +1,177 @@
-# Unityverse-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unityverse - Seu Hub de Jogos Unificado</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <header>
-        <div class="logo">Unityverse</div>
-        <nav>
-            <a href="#">Loja</a>
-            <a href="#">Comunidade</a>
-            <a href="#">Novidades UE5</a>
-            <a href="#">Minha Conta</a>
-        </nav>
-    </header>
+/* Variáveis de Cor */
+:root {
+    --fundo-principal: #121212;
+    --fundo-secundario: #1e1e1e;
+    --fundo-painel: #2a2a2a;
+    --cor-velvet: #E70044; /* Vermelho Velvet Intenso */
+    --texto-principal: #ffffff;
+    --texto-secundario: #a0a0a0;
+}
 
-    <main>
-        <section id="destaque" class="destaque-area">
-            <h1>Lançamentos em Destaque</h1>
-            <div id="destaque-carrossel" class="carrossel">
-                </div>
-        </section>
+body {
+    background-color: var(--fundo-principal);
+    color: var(--texto-principal);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        <hr>
+/* -------------------- HEADER / NAVEGAÇÃO -------------------- */
+header {
+    background-color: var(--fundo-secundario);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--cor-velvet); /* Destaque Velvet */
+}
 
-        <section class="catalogo-area">
-            <aside class="filtros">
-                <h2>Filtrar Catálogo</h2>
-                <div class="filtro-grupo">
-                    <h3>Loja</h3>
-                    <label><input type="checkbox" data-filtro="loja-epic"> Epic Games Store</label>
-                    <label><input type="checkbox" data-filtro="loja-ubisoft"> Ubisoft Store</label>
-                </div>
-                <div class="filtro-grupo">
-                    <h3>Engine</h3>
-                    <label><input type="checkbox" data-filtro="engine-ue5"> Unreal Engine 5</label>
-                    <label><input type="checkbox" data-filtro="engine-ue4"> Unreal Engine 4</label>
-                </div>
-                </aside>
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cor-velvet);
+}
 
-            <div class="catalogo-lista">
-                <h2>Catálogo Unificado</h2>
-                <div id="lista-jogos" class="grade-jogos">
-                    </div>
-            </div>
-        </section>
-    </main>
+nav a {
+    color: var(--texto-principal);
+    text-decoration: none;
+    margin-left: 25px;
+    padding: 5px 10px;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 4px;
+}
 
-    <footer class="footer-bar">
-        &copy; 2025 Unityverse - Portal de Jogos Agregados.
-    </footer>
+nav a:hover {
+    color: var(--cor-velvet);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* -------------------- MAIN / SEÇÕES -------------------- */
+main {
+    padding: 30px 5%;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--fundo-painel);
+    margin: 40px 0;
+}
+
+/* -------------------- CATÁLOGO E FILTROS -------------------- */
+.catalogo-area {
+    display: flex;
+    gap: 30px;
+}
+
+.filtros {
+    width: 250px;
+    padding: 20px;
+    background-color: var(--fundo-painel);
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.filtro-grupo {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--fundo-secundario);
+}
+
+.filtro-grupo h3 {
+    color: var(--cor-velvet);
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.filtros label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.catalogo-lista {
+    flex-grow: 1;
+}
+
+.grade-jogos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* -------------------- CARD DO JOGO (Miniatura) -------------------- */
+.game-card {
+    background-color: var(--fundo-secundario);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--fundo-secundario);
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--cor-velvet);
+}
+
+.game-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.game-info {
+    padding: 15px;
+}
+
+.game-info h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: var(--texto-principal);
+}
+
+.game-tags span {
+    display: inline-block;
+    background-color: var(--fundo-painel);
+    color: var(--cor-velvet);
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.game-price-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--cor-velvet);
+}
+
+.rating {
+    background-color: var(--cor-velvet);
+    color: var(--texto-principal);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* -------------------- FOOTER -------------------- */
+.footer-bar {
+    background-color: var(--fundo-secundario);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 12px;
+    color: var(--texto-secundario);
+    margin-top: 50px;
+}
